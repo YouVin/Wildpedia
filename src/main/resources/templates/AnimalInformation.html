@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>커뮤니티 메인</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .separator {
+            border-top: 1px solid black;
+            margin: 10px 0;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #f2f2f2;
+            border: 2px solid #ddd;
+            color: #333;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+
+        .button:hover {
+            background-color: #ddd;
+        }
+        .button-wrapper {
+            text-align: right;
+        }
+        .mt {
+        font-size: 20px;
+        font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="mt">커뮤니티 메인 페이지</div>
+<div class="button-wrapper">
+    <a href="/AnimalInformation/insertForm" class="button">ADD</a>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>NO</th>
+        <th>작성자</th>
+        <th>제목</th>
+        <th>내용</th>
+        <th>날짜</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="separator">
+        <td colspan="5"></td>
+    </tr>
+    <tr th:each="ani, index : ${animals}">
+        <td th:text="${index.count}"></td>
+        <td th:text="${ani.name}"></td>
+        <td><a th:href="@{/AnimalInformationDetail/{idx}(idx=${ani.idx})}" th:text="${ani.title}"></a></td>
+        <td th:text="${ani.content}"></td>
+        <td th:text="${ani.date}"></td>
+        <td><a th:href="@{/AnimalInformation/delete/{idx}(idx=${ani.idx})}">삭제</a></td>
+
+    </tr>
+    </tbody>
+</table>
+<div class="separator"></div>
+<br>
+<div class="button-wrapper">
+    <a href="/" class="button">HOME</a>
+</div>
+</body>
+</html>

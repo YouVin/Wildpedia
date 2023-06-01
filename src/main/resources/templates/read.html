@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>동물사전 상세페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .list-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            color: #333;
+            text-decoration: none;
+            border-radius: 3px;
+            margin-bottom: 20px;
+
+        }
+
+        .list-link:hover {
+            background-color: #ddd;
+        }
+
+        .image {
+            width: 300px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            white-space: pre-line;
+            margin-bottom: 20px;
+        }
+
+        .update-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            color: #333;
+            text-decoration: none;
+            border-radius: 3px;
+            text-align: right;
+        }
+
+        .update-link:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>동물사전</h1>
+    <a href="/list" class="list-link">목록</a>
+    <br/>
+    <img th:src="|/${animal.image}|" alt="동물 이미지" class="image"/>
+    <br/>
+    <h2>종류 > [[${animal.name}]]</h2>
+
+    <br/>
+    <p class="content" th:utext="${animal.content}"></p>
+    <br/>
+    <a th:href="@{/updateForm/{idx}(idx=${animal.idx})}" class="update-link">수정</a>
+</div>
+</body>
+</html>

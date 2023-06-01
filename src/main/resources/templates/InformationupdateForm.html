@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+        input[type="text"],
+        textarea {
+            border: none;
+            border-bottom: 1px solid black;
+            padding: 8px;
+            width: 300px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"]::placeholder,
+        textarea::placeholder {
+            color: gray;
+        }
+
+        form {
+            padding: 20px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            color: #333;
+            text-decoration: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ddd;
+        }
+
+        .back-button {
+            padding: 5px 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            color: #333;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        .back-button:hover {
+            background-color: #ddd;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var name = document.forms["insertForm"]["name"].value;
+            var title = document.forms["insertForm"]["title"].value;
+            var content = document.forms["insertForm"]["content"].value;
+             var date = document.forms["insertForm"]["date"].value;
+
+            if (name === "" || title === "" || content === "" || date === "") {
+                alert("안 적힌 부분을 입력해주세요.");
+                return false;
+            }
+        }
+    </script>
+<body>
+
+<h3>데이터 수정</h3>
+
+<form name="insertForm" action="/AnimalInformation/update"  onsubmit="return validateForm()"/>
+<input type="text" readonly name="idx"  th:value="${animal.idx}"><br/>
+<input type="text" name="name"  th:value="${animal.idx}"><br/>
+<input type="text" name="title" th:value="${animal.title}"><br/>
+<textarea rows="5" cols="40" name="content" placeholder="content" th:text="${animal.content}"> </textarea><br/>
+<input type="text" name="date" th:value="${animal.date}"><br/>
+<input type="submit" value="수정" />
+</form>
+
+</body>
+</html>

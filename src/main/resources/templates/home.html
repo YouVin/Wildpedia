@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            position: relative;
+        }
+        .header {
+            height: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .header img {
+            height: 70%;
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            background-color: #2c2c2c; /* Light Gray */
+
+        }
+        .content button {
+            background-color: #2c2c2c;
+            font-family: Arial, sans-serif;
+            font-size: 25px;
+            border: none;
+            margin-right: 40px;
+            margin-top: 10px;
+            cursor: pointer;
+            color:white
+        }
+         .content button:last-child {
+            margin-right: 0;
+        }
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 24px;
+            color: black; /* Light Gray */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo">WildPedia</div>
+        <img src="home.jpg" th:src="@{/home.jpg}" alt="Home Image">
+    </div>
+    <div class="content">
+        <button onclick="location.href='/list'">동물사전</button>
+        <button onclick="location.href='/AnimalInformation'"> 커뮤니티</button>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>글 작성</title>
+</head>
+<style>
+        input[type="text"],
+        textarea {
+            border: none;
+            border-bottom: 1px solid black;
+            padding: 8px;
+            width: 300px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"]::placeholder,
+        textarea::placeholder {
+            color: gray;
+        }
+
+        form {
+            padding: 20px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            color: #333;
+            text-decoration: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ddd;
+        }
+
+        .back-button {
+            padding: 5px 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            color: #333;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        .back-button:hover {
+            background-color: #ddd;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var idx = document.forms["insertForm"]["idx"].value;
+            var name = document.forms["insertForm"]["name"].value;
+            var title = document.forms["insertForm"]["title"].value;
+            var content = document.forms["insertForm"]["content"].value;
+            var date = document.forms["insertForm"]["date"].value;
+
+            if (idx === "" || name === "" || title === "" || content === "" || date === "") {
+                alert("안 적힌 부분을 입력해주세요.");
+                return false;
+            }
+        }
+    </script>
+<body>
+
+<a href="/AnimalInformation" class="back-button">뒤로가기</a>
+<br>
+<form name="insertForm" action="/AnimalInformation/insert" onsubmit="return validateForm()">
+    <input type="text" name="idx" placeholder="idx" /><br/>
+    <input type="text" name="name" placeholder="name" /><br/>
+    <input type="text" name="title" placeholder="title" /><br/>
+    <textarea rows="5" cols="40" name="content" placeholder="content"></textarea><br/>
+    <input type="text" name="date" placeholder="date" /></br>
+    <input type="submit" value="추가" />
+</form>
+
+</body>
+
+
+
+</body>
+</html>

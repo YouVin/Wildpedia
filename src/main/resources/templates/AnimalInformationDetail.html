@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>게시글 상세</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .author {
+      color: #777;
+      margin-bottom: 10px;
+    }
+
+    .content {
+      white-space: pre-line;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+    .button {
+      padding: 10px 20px;
+      background-color: #f2f2f2;
+      border: 1px solid #ddd;
+      color: #333;
+      text-decoration: none;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .button:hover {
+      background-color: #ddd;
+    }
+    .buttons a {
+      margin-left: 10px;
+    }
+    .community-link {
+      font-size: 14px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: #777;
+      margin-left: auto;
+      font-weight: bold;
+    }
+    .community-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2 class="title">게시글 상세</h2>
+  <div>
+    <a href="/AnimalInformation" class="community-link buttons">커뮤니티</a>
+  </div>
+  <br/>
+
+  <div>
+    <h3 class="title"><span th:text="${animal.title}" /></h3>
+    <br/>
+    <p class="author">작성자: <span th:text="${animal.name}" /></p>
+
+    <p class="content"><span th:text="${animal.content}" /></p>
+
+    <p class="date"><span th:text="${animal.date}"></span></p>
+  </div>
+
+  <div class="buttons">
+    <a th:href="@{/AnimalInformation/updateForm/{idx}(idx=${animal.idx})}" class="button">수정</a>
+  </div>
+</div>
+
+</body>
+</html>
